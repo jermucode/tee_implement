@@ -43,13 +43,6 @@ int main(int argc, char *argv[])
 				afnd=0;
 		}
 	}
-	/*
-	for(;optind < argc; optind++)
-	{
-		outputFd=open(argv[optind];
-	}
-	*/
-
 
 	if(afnd!=0)
 	{
@@ -61,10 +54,7 @@ int main(int argc, char *argv[])
 	}
 	filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
 
-	for(;optind < argc;optind++)
-	{
 	outputFd = open(argv[optind], openFlags, filePerms);
-	}
 	if(outputFd == -1)
 	{
 		printf("%s\n",strerror(errno));
