@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
 	mode_t filePerms;
 	ssize_t numRead;
 	char buf[BUF_SIZE+1]; /*So that we have null byte */
-	
+
 	afnd=0;
-	
+
 	if(argc == 1 || strcmp(argv[1], "--help") == 0)
 	{
 		printf("Program needs at least 1 argument\n");
