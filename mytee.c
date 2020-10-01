@@ -94,6 +94,9 @@ int main(int argc, char *argv[])
 
 	/* Let's add the terminating null byte since we make space for it*/
 	buf[numRead] = '\0';
+	write(outputFd, buf, numRead);
+
+
 
 	/* Check for errors*/
 	if(numRead == -1)
