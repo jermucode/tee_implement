@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 		printf("%s\n",strerror(errno));
 		exit(EXIT_FAILURE);
 	}
-	
+
 	/* Reading using while
 	 * Earlier implementations read in 1024 bytes and wrote just that
 	 * but calling e.g. 
@@ -85,12 +85,15 @@ int main(int argc, char *argv[])
 	 * This works*/
 	while((numRead = read(STDIN_FILENO, buf, BUF_SIZE))>0)
 	{
-	if(write(outputFd,buf, numRead) != numRead)
-	{
-		printf("Could not write whole buffer\n");
-		exit(EXIT_FAILURE);
+		if(write(outputFd,buf, numRead) != numRead)
+		{
+			printf("Could not write whole buffer\n");
+			exit(EXIT_FAILURE);
+		}
 	}
-	}
+
+	/* Let's add the terminating null byte since we make space for it*/
+	buf[numRead] = '\0';
 
 	/* Check for errors*/
 	if(numRead == -1)
@@ -99,8 +102,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	
-	
+
+
 	/* Close the output file */
 	if(close(outputFd) == -1)
 	{
