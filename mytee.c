@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
 	if(outputFd == -1)
 	{
 		printf("%s\n",strerror(errno));
+		exit(EXIT_FAILURE);
 	}
 
 	numRead = read(STDIN_FILENO, buf, BUF_SIZE);
